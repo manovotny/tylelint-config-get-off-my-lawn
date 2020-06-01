@@ -1,4 +1,5 @@
 module.exports = {
+    'alpha-value-notation': 'number',
     'at-rule-empty-line-before': [
         'always',
         {
@@ -14,8 +15,14 @@ module.exports = {
     'block-closing-brace-empty-line-before': 'never',
     'block-closing-brace-newline-after': 'always',
     'block-closing-brace-newline-before': 'always',
-    'block-no-empty': true,
+    'block-no-empty': [
+        true,
+        {
+            ignore: ['comments']
+        }
+    ],
     'block-opening-brace-newline-after': 'always',
+    'color-function-notation': 'legacy',
     'color-hex-case': 'lower',
     'color-hex-length': 'short',
     'color-named': 'never',
@@ -48,12 +55,14 @@ module.exports = {
     'declaration-no-important': true,
     'font-family-name-quotes': 'always-where-recommended',
     'font-family-no-duplicate-names': true,
+    'font-family-no-missing-generic-family-keyword': true,
     'font-weight-notation': [
         'named-where-possible',
         {
             ignore: ['relative']
         }
     ],
+    'function-calc-no-invalid': true,
     'function-calc-no-unspaced-operator': true,
     'function-comma-newline-after': 'never-multi-line',
     'function-comma-newline-before': 'never-multi-line',
@@ -66,14 +75,18 @@ module.exports = {
     'function-parentheses-space-inside': 'never',
     'function-url-quotes': 'always',
     'function-whitespace-after': 'always',
+    'hue-degree-notation': 'angle',
     indentation: 4,
     'keyframe-declaration-no-important': true,
+    'keyframes-name-pattern': '^[a-z][a-z-]+[a-z]$',
     'length-zero-no-unit': true,
+    linebreaks: 'unix',
     'max-empty-lines': 1,
     'max-nesting-depth': [
         4,
         {
-            ignore: ['blockless-at-rules']
+            ignore: ['blockless-at-rules', 'pseudo-classes'],
+            ignoreAtRules: ['media']
         }
     ],
     'media-feature-colon-space-after': 'always',
@@ -88,7 +101,16 @@ module.exports = {
     'media-query-list-comma-newline-before': 'never-multi-line',
     'media-query-list-comma-space-after': 'always',
     'media-query-list-comma-space-before': 'never',
-    'no-duplicate-selectors': true,
+    'no-duplicate-at-import-rules': true,
+    'no-duplicate-selectors': [
+        true,
+        {
+            // Change this to `true` once this issue is fixed.
+            // https://github.com/stylelint/stylelint/issues/4683
+            disallowInList: false
+        }
+    ],
+    'no-empty-first-line': true,
     'no-empty-source': true,
     'no-eol-whitespace': true,
     'no-extra-semicolons': true,
@@ -131,7 +153,7 @@ module.exports = {
     'selector-max-type': [
         0,
         {
-            ignore: ['child', 'compounded', 'descendant']
+            ignore: ['child', 'compounded', 'descendant', 'next-sibling']
         }
     ],
     'selector-no-vendor-prefix': true,
@@ -146,6 +168,7 @@ module.exports = {
     'shorthand-property-no-redundant-values': true,
     'string-no-newline': true,
     'string-quotes': 'single',
+    'unicode-bom': 'never',
     'unit-case': 'lower',
     'unit-no-unknown': true,
     'value-keyword-case': 'lower',
